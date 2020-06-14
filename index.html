@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                type: "GET",
+                url: "/tango.csv",
+                dataType: "text",
+                success: function(data) {
+                    processData(data);
+                    console.log('loaded');
+                }
+            });
+        });
+
+        function processData(allText) {
+            var record_num = 2;  // or however many elements there are in each row
+            var allTextLines = allText.split('\r\n');
+            var frs = [];
+            for (var tuple of allTextLines){
+                frs.push(tuple.split(',')[0]);
+            }
+            console.log(frs);
+            var counter = 0;
+            setInterval(function(){
+                // console.log(frs[counter]);
+                $(".vocab").text(frs[counter]);
+                counter++;
+            }, 1000);
+        }
+    </script>
+    <style>
+       .container {
+        margin:auto;
+       } 
+       .vocab {
+        margin: auto;
+        width: 100%; 
+        font-size: 500%;
+        text-align: center;
+       }
+
+    </style>
+
+  </head>
+  <body>
+  <section class="section">
+    <div class="container" >
+        <h1 class="vocab">
+            
+        </h1>
+
+<!--       <h1 class="title">
+        Hello World
+      </h1>
+      <p class="subtitle">
+        My first website with <strong>Bulma</strong>!
+      </p>
+ -->
+    </div>
+  </section>
+  </body>
+</html>
