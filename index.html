@@ -25,14 +25,17 @@
             var record_num = 2;  // or however many elements there are in each row
             var allTextLines = allText.split('\r\n');
             var frs = [];
+            var frs2 = [];
             for (var tuple of allTextLines){
                 frs.push(tuple.split(',')[0]);
+                frs2.push(tuple.split(',')[1]);
             }
             console.log(frs);
             var counter = 0;
             setInterval(function(){
                 // console.log(frs[counter]);
                 $(".vocab").text(frs[counter]);
+                $(".vocab2").text(frs2[counter]);
                 counter++;
             }, 1000);
         }
@@ -55,6 +58,9 @@
   <section class="section">
     <div class="container" >
         <h1 class="vocab">
+            
+        </h1>
+        <h1 class="vocab2">
             
         </h1>
 
