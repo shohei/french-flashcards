@@ -13,16 +13,21 @@
         var noSleep = new NoSleep();
 
         $(function() {
-          var url = "http://shoheiaoki.com/french-flashcards"
+          var dicts = ['jun1kyu.csv','kuchiga_oboeru'];
+
+          function chooseDict(index) {
+            var url = "http://shoheiaoki.com/french-flashcards"
+            var dict = dicts[index];
             $.ajax({
-                type: "GET",
-                url: url+"/tango.csv",
-                dataType: "text",
-                success: function(data) {
-                    processData(data);
-                    console.log('loaded');
-                }
+              type: "GET",
+              url: url+"/"+dict,
+              dataType: "text",
+              success: function(data) {
+                processData(data);
+                console.log('loaded');
+              }
             });
+          }
 
             $("#switchExample").on('click',function(){
                 var current = $(this).attr("checked");
@@ -83,6 +88,10 @@
       <input id="switchExample" type="checkbox" name="switchExample" class="switch">
       <label for="switchExample">Keep screen on</label>
   </div>
+  <div class="buttons">
+    <button class="chooseDict(0)">仏検準１級・２級単語集</button>
+    <button class="chooseDict(1)">口が覚えるフランス語</button>
+  </div>
   <div class="container" >
         <h1 class="vocab">
             
@@ -90,6 +99,7 @@
         <h1 class="vocab2">
             
         </h1>
+
 
 
 <!--       <h1 class="title">
