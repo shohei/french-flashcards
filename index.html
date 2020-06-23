@@ -35,7 +35,7 @@ function shuffle(array) {
 }
 
 
-function chooseDict(index) {
+function chooseDict(index, delay) {
   for (var i = 0; i < timers.length; i++){
     clearTimeout(timers[i]);
   }
@@ -84,7 +84,7 @@ function processData(allText) {
     $(".vocab").text(frs[counter]);
     $(".vocab2").text(frs2[counter]);
     counter++;
-  }, 1000));
+  }, delay));
 }
     </script>
     <style>
@@ -114,26 +114,12 @@ function processData(allText) {
         <label for="switchExample">Keep screen on</label>
       </div>
       <div class="buttons">
-        <button class="button" onclick="chooseDict(0)">仏検準１級・２級単語集</button>
-        <button class="button" onclick="chooseDict(1)">口が覚えるフランス語</button>
+        <button class="button" onclick="chooseDict(0,1000)">仏検準１級・２級単語集</button>
+        <button class="button" onclick="chooseDict(1,3000)">口が覚えるフランス語</button>
       </div>
       <div class="container" >
-        <h1 class="vocab">
-
-        </h1>
-        <h1 class="vocab2">
-
-        </h1>
-
-
-
-        <!--       <h1 class="title">
-          Hello World
-          </h1>
-          <p class="subtitle">
-          My first website with <strong>Bulma</strong>!
-          </p>
-        -->
+        <h1 class="vocab"></h1>
+        <h1 class="vocab2"></h1>
       </div>
     </section>
   </body>
