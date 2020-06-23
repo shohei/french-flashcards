@@ -48,7 +48,7 @@ function chooseDict(index, delay) {
     url: url+"/"+dict,
     dataType: "text",
     success: function(data) {
-      processData(data);
+      processData(data, delay);
       console.log('loaded');
     }
   });
@@ -67,7 +67,7 @@ $("#switchExample").on('click',function(){
   $(this).attr("checked", !$(this).attr("checked"));
 });
 
-function processData(allText) {
+function processData(allText, delay) {
   var record_num = 2;  // or however many elements there are in each row
   var allTextLines = allText.split('\r\n');
   var frs = [];
