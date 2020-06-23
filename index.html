@@ -15,6 +15,25 @@ var timers = [];
 
 var dicts = ['jun1kyu.csv','kuchiga_oboeru.csv'];
 
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 
 function chooseDict(index) {
   for (var i = 0; i < timers.length; i++){
@@ -53,6 +72,7 @@ function processData(allText) {
   var allTextLines = allText.split('\r\n');
   var frs = [];
   var frs2 = [];
+  shuffle(allTextLines);
   for (var tuple of allTextLines){
     frs.push(tuple.split(',')[0]);
     frs2.push(tuple.split(',')[1]);
